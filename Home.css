@@ -1,0 +1,90 @@
+ .u-section-1 {
+  background-image: none;
+  min-height: 642px;
+}
+
+.u-section-1 .u-list-1 {
+  margin-top: 57px;
+  margin-bottom: 60px;
+}
+
+.u-section-1 .u-repeater-1 {
+  min-height: 433px;
+  grid-template-columns: 100%;
+  grid-gap: 11px 11px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 10px;
+}
+
+.u-section-1 .u-btn-1 {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 10px;
+}
+
+.u-section-1 .u-btn-2 {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
+
+.u-section-1 .u-container-layout-3 {
+  padding: 10px;
+}
+
+.u-section-1 .u-btn-3 {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
+
+.u-section-1 .u-container-layout-4 {
+  padding: 10px;
+}
+
+.u-section-1 .u-btn-4 {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
+
+.u-section-1 .u-container-layout-5 {
+  padding: 10px;
+}
+
+details {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 10px;
+}
+
+.u-section-1 .u-btn-5 {
+  font-size: 2.25rem;
+  font-family: CONSOLA;
+  margin: 0 auto 0 0;
+  padding: 0;
+}@font-face {
+  font-family: 'CONSOLA';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/CONSOLA.TTF);
+}
+
+@media (max-width: 575px)
+{
+details
+{
+font-size:20px!important;
+}
+}
