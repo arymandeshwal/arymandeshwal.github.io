@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aryman Deshwal, AI &amp; Cloud Engineer</title>
+<meta name="description" content="AI &amp; Cloud Engineer building LLM-powered agent systems, RAG pipelines, and scalable microservices. Based in Paderborn, Germany.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:       oklch(0.980 0.006 85);
+    --paper-warm:  oklch(0.955 0.010 80);
+    --ink:         oklch(0.215 0.012 70);
+    --ink-soft:    oklch(0.420 0.012 70);
+    --ink-faint:   oklch(0.620 0.010 70);
+    --rule:        oklch(0.880 0.010 75);
+    --rule-soft:   oklch(0.930 0.008 75);
+    --accent:      oklch(0.555 0.135 40);
+    --accent-ink:  oklch(0.430 0.135 40);
+
+    --serif: "Newsreader", "Source Serif 4", Georgia, serif;
+    --sans:  "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono:  "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --measure: 640px;
+    --rail: 280px;
+    --gutter: 72px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    font-feature-settings:"ss01","ss02","cv11";
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--accent);color:var(--paper)}
+
+  a{color:inherit;text-decoration:none}
+  a.link{
+    color:var(--accent-ink);
+    border-bottom:1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+    transition:border-color .2s, color .2s;
+  }
+  a.link:hover{border-bottom-color:var(--accent)}
+
+  img{display:block;max-width:100%;height:auto}
+
+  /* -------- Layout -------- */
+  .page{
+    max-width:1160px;
+    margin:0 auto;
+    padding:64px 48px 96px;
+    display:grid;
+    grid-template-columns: var(--rail) 1fr;
+    gap: var(--gutter);
+  }
+
+  .rail{
+    position:sticky;
+    top:64px;
+    align-self:start;
+  }
+
+  .content{
+    max-width:var(--measure);
+    min-width:0;
+  }
+
+  /* -------- Rail -------- */
+  .portrait{
+    width:180px;
+    height:180px;
+    border-radius:2px;
+    overflow:hidden;
+    background:var(--paper-warm);
+    margin-bottom:28px;
+    position:relative;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover}
+  .portrait::after{
+    content:"";
+    position:absolute;inset:0;
+    box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.05);
+    pointer-events:none;
+  }
+
+  .rail h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:30px;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .rail .role{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:17px;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+  }
+
+  .rail .contact{
+    font-family:var(--sans);
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.85;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .rail .contact li{display:flex;gap:10px;align-items:baseline}
+  .rail .contact .label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--ink-faint);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    width:44px;
+    flex:none;
+  }
+  .rail .contact a{color:var(--ink)}
+  .rail .contact a:hover{color:var(--accent-ink)}
+
+  .rail .rule{
+    height:1px;background:var(--rule);
+    margin:24px 0;
+    width:120px;
+  }
+
+  .rail .availability{
+    font-family:var(--sans);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;align-items:center;gap:8px;
+    margin-top:4px;
+  }
+  .rail .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+  }
+
+  /* -------- Content -------- */
+  .lede{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:30px;
+    line-height:1.28;
+    letter-spacing:-0.012em;
+    color:var(--ink);
+    margin:0 0 8px;
+    text-wrap:pretty;
+  }
+  .lede em{font-style:italic;color:var(--accent-ink)}
+  .lede-sub{
+    font-family:var(--sans);
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 56px;
+    max-width:560px;
+  }
+
+  section{margin-bottom:56px}
+  section:last-of-type{margin-bottom:0}
+
+  .section-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin-bottom:28px;
+  }
+  .section-head h2{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0;
+  }
+  .section-head .line{flex:1;height:1px;background:var(--rule)}
+
+  /* Entry */
+  .entry{
+    display:grid;
+    grid-template-columns: 96px 1fr;
+    gap:24px;
+    margin-bottom:36px;
+  }
+  .entry:last-child{margin-bottom:0}
+  .entry .when{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    padding-top:4px;
+    line-height:1.6;
+  }
+  .entry .body h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:19px;
+    line-height:1.3;
+    margin:0 0 2px;
+    color:var(--ink);
+  }
+  .entry .body .meta{
+    font-family:var(--sans);
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  .entry .body .meta .sep{color:var(--ink-faint);margin:0 8px}
+  .entry .body p{
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink);
+    margin:0 0 10px;
+    text-wrap:pretty;
+  }
+  .entry .body ul{
+    list-style:none;padding:0;margin:0 0 8px;
+  }
+  .entry .body li{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink);
+    padding-left:18px;
+    position:relative;
+    margin-bottom:8px;
+    text-wrap:pretty;
+  }
+  .entry .body li::before{
+    content:"";
+    position:absolute;
+    left:0;top:0.7em;
+    width:8px;height:1px;
+    background:var(--ink-faint);
+  }
+  .entry .body .subhead{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:0.04em;
+    color:var(--accent-ink);
+    text-transform:none;
+    margin:14px 0 6px;
+  }
+  .entry .body .subhead:first-child{margin-top:0}
+
+  .highlight{
+    color:var(--ink);
+    font-weight:500;
+  }
+
+  /* Publication block */
+  .pub{
+    padding:24px;
+    background:var(--paper-warm);
+    border:1px solid var(--rule-soft);
+    border-radius:3px;
+  }
+  .pub .tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    margin:0 0 10px;
+  }
+  .pub h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:20px;
+    line-height:1.3;
+    margin:0 0 10px;
+    color:var(--ink);
+  }
+  .pub .venue{
+    font-family:var(--sans);
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  .pub p{font-size:14.5px;line-height:1.6;margin:0 0 12px;color:var(--ink)}
+  .pub .authors{
+    font-family:var(--sans);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin:0 0 14px;
+  }
+  .pub .authors strong{color:var(--ink);font-weight:500}
+  .pub .links{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.02em;
+    display:flex;gap:20px;
+  }
+
+  /* Projects grid */
+  .projects{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:28px 32px;
+  }
+  .project h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:17px;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .project .meta{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 10px;
+  }
+  .project p{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0;
+  }
+
+  /* Hackathon block with image */
+  .hackathons{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:28px;
+  }
+  .hack-feature{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .hack-feature .photo{
+    background:var(--paper-warm);
+    border-radius:3px;
+    overflow:hidden;
+    aspect-ratio: 3/2;
+  }
+  .hack-feature .photo img{width:100%;height:100%;object-fit:cover}
+  .hack-feature .caption{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+    margin-top:8px;
+    text-transform:uppercase;
+  }
+  .hack-entry .prize{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--accent-ink);
+    font-size:15px;
+  }
+
+  /* Skills */
+  .skills{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px 40px;
+  }
+  .skill-group .label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 8px;
+  }
+  .skill-group .values{
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.65;
+    color:var(--ink);
+  }
+
+  /* CTA */
+  .cta{
+    margin-top:72px;
+    padding:48px 0 0;
+    border-top:1px solid var(--rule);
+  }
+  .cta h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:32px;
+    line-height:1.2;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .cta h2 em{color:var(--accent-ink)}
+  .cta p{
+    font-family:var(--sans);
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0 0 24px;
+    max-width:480px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:500;
+    padding:12px 20px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:2px;
+    transition:background .2s, transform .15s;
+  }
+  .btn:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  .btn .arrow{font-family:var(--serif);font-style:italic;font-size:16px}
+
+  .cta-secondary{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin-left:20px;
+  }
+  .cta-secondary a{color:var(--ink);border-bottom:1px solid var(--rule)}
+  .cta-secondary a:hover{color:var(--accent-ink);border-bottom-color:var(--accent)}
+
+  /* Footer */
+  footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--rule-soft);
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    display:flex;justify-content:space-between;
+    text-transform:uppercase;
+  }
+
+  /* -------- Responsive -------- */
+  @media (max-width: 900px){
+    :root{--rail: 220px; --gutter: 48px}
+    .page{padding:48px 36px}
+    .portrait{width:150px;height:150px}
+    .rail h1{font-size:26px}
+    .projects{grid-template-columns:1fr}
+    .hack-feature{grid-template-columns:1fr}
+  }
+  @media (max-width: 680px){
+    .page{
+      grid-template-columns:1fr;
+      gap:40px;
+      padding:32px 24px 64px;
+    }
+    .rail{position:static}
+    .portrait{width:120px;height:120px;margin-bottom:20px}
+    .rail h1{font-size:28px}
+    .lede{font-size:24px}
+    .entry{grid-template-columns:1fr;gap:6px}
+    .entry .when{padding-top:0}
+    .skills{grid-template-columns:1fr}
+    .cta h2{font-size:26px}
+    .cta-secondary{display:block;margin:16px 0 0}
+    footer{flex-direction:column;gap:8px}
+  }
+
+  @media print{
+    body{background:white}
+    .rail{position:static}
+    .cta,.cta *{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <!-- LEFT RAIL -->
+  <aside class="rail">
+    <div class="portrait">
+      <img src="assets/aryman.png" alt="Portrait of Aryman Deshwal" width="180" height="180">
+    </div>
+    <h1>Aryman<br>Deshwal</h1>
+    <p class="role">AI &amp; Cloud Engineer</p>
+
+    <ul class="contact">
+      <li><span class="label">Loc</span><span>Paderborn, DE</span></li>
+      <li><span class="label">Mail</span><a href="mailto:deshwal.aryman@gmail.com">deshwal.aryman@​gmail.com</a></li>
+      <li><span class="label">Git</span><a href="https://github.com/arymandeshwal" target="_blank" rel="noopener">github.com/arymandeshwal</a></li>
+      <li><span class="label">In</span><a href="https://www.linkedin.com/in/aryman-deshwal-905612168/" target="_blank" rel="noopener">linkedin.com/in/aryman-deshwal</a></li>
+    </ul>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <p class="lede">
+      I build <em>LLM-powered agent systems</em>, RAG pipelines, and the scalable services that keep them honest in production.
+    </p>
+    <p class="lede-sub">
+      Currently an AI &amp; Cloud Engineer at AI Marketplace GmbH and an M.Sc. Computer Science candidate at Paderborn University, working on multi-agent orchestration, explainable AI, and knowledge graphs.
+    </p>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-head">
+        <h2>Selected Experience</h2>
+        <span class="line"></span>
+      </div>
+
+      <div class="entry">
+        <div class="when">2024 to<br>Present</div>
+        <div class="body">
+          <h3>AI &amp; Cloud Engineer</h3>
+          <p class="meta">AI Marketplace GmbH <span class="sep">·</span> Working student, 20 hrs/week <span class="sep">·</span> Paderborn</p>
+
+          <p class="subhead">Agent Engine: scalable microservices</p>
+          <ul>
+            <li>Drove a <span class="highlight">300%+ improvement</span> in microservice response times by architecting a Redis-backed scaler-worker system, with no degradation in output quality.</li>
+            <li>Designed a 3-mode orchestrator agent, <em>Plan</em>, <em>Ask</em>, and <em>Accept All</em>, offering flexible human-in-the-loop control across autonomous and supervised execution modes.</li>
+            <li>Enabled provider-configurable custom LangGraph workflows, extending the platform beyond pre-built templates.</li>
+          </ul>
+
+          <p class="subhead">Multi-Agent 3D Generation Framework</p>
+          <ul>
+            <li>Led the architecture of a <span class="highlight">13+ agent orchestration framework</span> in LangGraph for automated 3D-structure creation, modification, and deletion, a novel application of multi-agent systems.</li>
+          </ul>
+
+          <p class="subhead">Microsoft Copilot RAG System, Client: prostep ivip</p>
+          <ul>
+            <li>Led end-to-end design and deployment of a Copilot RAG system with role-based access control, processing 3,000+ documents and serving users directly inside MS Teams.</li>
+            <li>Engineered a sandboxed Python execution environment running user code in isolated Docker containers, eliminating remote code execution risk.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">2023 to<br>2024</div>
+        <div class="body">
+          <h3>Student Research Assistant</h3>
+          <p class="meta">DICE Research Group <span class="sep">·</span> Paderborn University</p>
+          <ul>
+            <li>Benchmarked 6 open-source LLMs (Mistral, Mixtral, Llama 2/3, Zephyr) and achieved <span class="highlight">90%+ accuracy</span> on material-science tasks post fine-tuning, on par with state-of-the-art proprietary models.</li>
+            <li>Mapped hundreds of research papers and material-science URIs to the Springer knowledge graph, improving RAG workflow efficiency by 25%.</li>
+            <li>Deployed and enriched a SPARQL endpoint over the KG using Wikipedia substance and property data, driving a 30% lift in data organization quality.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">2020 to<br>2022</div>
+        <div class="body">
+          <h3>Python Instructor</h3>
+          <p class="meta">Cue Learn &amp; Self-employed <span class="sep">·</span> India <span class="sep">·</span> 80+ students, 4 countries</p>
+          <ul>
+            <li>Taught Python and game development (pygame, tkinter) to 80+ students across the US, UK, Canada, and Switzerland, with a 95% satisfaction rate.</li>
+            <li>Earned <em>Star Teacher</em> recognition within 3 months of joining Cue Learn, the fastest in the cohort.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATION -->
+    <section>
+      <div class="section-head">
+        <h2>Publication</h2>
+        <span class="line"></span>
+      </div>
+
+      <article class="pub">
+        <p class="tag">ESWC 2024 · Posters &amp; Demos · Springer LNCS</p>
+        <h3>CLASS MATE: Cross-Lingual Semantic Search for Material Science Driven by Knowledge Graphs</h3>
+        <p>First contribution to cross-lingual semantic search in material science. Built a KG with multilingual entity labels for chemical substances, implemented a symbolic similarity-based NER algorithm, and shipped a demo retrieving information from the KG and LOD sources across languages.</p>
+        <p class="authors">A. Perevalov, J. Chinchghare, M. Krishna, S. Sharma, A. N. Lal, <strong>A. Deshwal</strong>, A. Both, A.-C. Ngonga Ngomo</p>
+        <p class="links">
+          <a class="link" href="https://link.springer.com/chapter/10.1007/978-3-031-78952-6_42" target="_blank" rel="noopener">Springer ↗</a>
+          <a class="link" href="https://2024.eswc-conferences.org/wp-content/uploads/2024/05/77770270.pdf" target="_blank" rel="noopener">ESWC PDF ↗</a>
+        </p>
+      </article>
+    </section>
+
+    <!-- HACKATHONS -->
+    <section>
+      <div class="section-head">
+        <h2>Recent Wins</h2>
+        <span class="line"></span>
+      </div>
+
+      <div class="hackathons">
+        <div class="hack-feature">
+          <div>
+            <div class="photo">
+              <img src="assets/makeathon.png" alt="Aryman presenting at the Makathon #XCHANGE4INDUSTRY" loading="lazy">
+            </div>
+            <p class="caption">Pitching at Makathon #XCHANGE4INDUSTRY · Paderborn · Dec 2025</p>
+          </div>
+          <div class="hack-entry">
+            <div class="entry" style="grid-template-columns:1fr;gap:4px;margin:0">
+              <div class="body">
+                <h3>Makathon #XCHANGE4INDUSTRY</h3>
+                <p class="meta">Fraunhofer IEM <span class="sep">·</span> Team of 5 <span class="sep">·</span> <span class="prize">1st place, €3,000</span></p>
+                <ul>
+                  <li>Solved two real-world problems for Werkzeugbau Berger GmbH: a high-temperature IoT sensor module for injection moulds enabling predictive maintenance, and <em>Digital Vault</em>, a centralized, versioned document platform used by Berger, suppliers, and clients.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="entry" style="grid-template-columns:1fr;gap:4px;margin:24px 0 0">
+              <div class="body">
+                <h3>Vibathon</h3>
+                <p class="meta">Google Developer Group <span class="sep">·</span> <span class="prize">1st place</span></p>
+                <ul>
+                  <li>Built a language-agnostic AI agent that calls doctors on the user's behalf, schedules appointments, and syncs with the calendar, fully autonomous end-to-end.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <div class="section-head">
+        <h2>Projects</h2>
+        <span class="line"></span>
+      </div>
+
+      <div class="projects">
+        <div class="project">
+          <h3>Fact-Checking Engine over Wikipedia KG</h3>
+          <p class="meta">RDF · SPARQL · Python</p>
+          <p>Validation engine leveraging the Wikipedia knowledge graph, achieving 92% accuracy on claim verification.</p>
+        </div>
+
+        <div class="project">
+          <h3>Explaining GNNs on Heterogeneous Graphs</h3>
+          <p class="meta">PyTorch Geometric · Captum</p>
+          <p>Explainability system for graph neural networks reaching 88% explanation accuracy in predicted links.</p>
+        </div>
+
+        <div class="project">
+          <h3>Requirement Doc Generation with Generative AI</h3>
+          <p class="meta">FastAPI · Noctua HPC</p>
+          <p>Led backend for a 5-person team; cut project runtime by 70% via code optimization and fine-tuning on Paderborn's supercomputer.</p>
+        </div>
+
+        <div class="project">
+          <h3>ASL Learning with Computer Vision</h3>
+          <p class="meta">OpenCV · MediaPipe</p>
+          <p>Gesture-recognition app teaching American Sign Language at 95% detection accuracy; led a team of three.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + SKILLS -->
+    <section>
+      <div class="section-head">
+        <h2>Education</h2>
+        <span class="line"></span>
+      </div>
+
+      <div class="entry">
+        <div class="when">2023 to<br>Present</div>
+        <div class="body">
+          <h3>M.Sc. Computer Science</h3>
+          <p class="meta">Paderborn University <span class="sep">·</span> Paderborn, Germany</p>
+          <p style="font-size:14.5px;color:var(--ink-soft)">Machine Learning · Explainable AI · Knowledge Graphs · Large Language Models · Deep Learning · Unsupervised Learning (R). Master's thesis in progress.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="when">2017 to<br>2021</div>
+        <div class="body">
+          <h3>B.Tech Computer Science &amp; Engineering</h3>
+          <p class="meta">KCC Institute of Technology &amp; Management (AKTU) <span class="sep">·</span> India</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Toolbox</h2>
+        <span class="line"></span>
+      </div>
+
+      <div class="skills">
+        <div class="skill-group">
+          <p class="label">Languages</p>
+          <p class="values">Python · SQL · SPARQL · R · C · RDF / Turtle · JavaScript</p>
+        </div>
+        <div class="skill-group">
+          <p class="label">AI / ML</p>
+          <p class="values">PyTorch · scikit-learn · LangChain · LangGraph · HuggingFace · OpenAI &amp; Claude APIs</p>
+        </div>
+        <div class="skill-group">
+          <p class="label">Cloud &amp; Infra</p>
+          <p class="values">Docker · Azure (Functions, AI Search) · AWS (EC2, S3) · Redis · GitHub Actions · Linux</p>
+        </div>
+        <div class="skill-group">
+          <p class="label">Web &amp; Data</p>
+          <p class="values">FastAPI · ReactJS · Streamlit · Selenium · MongoDB · MySQL · Pandas · NumPy</p>
+        </div>
+        <div class="skill-group">
+          <p class="label">Domains</p>
+          <p class="values">LLMs · RAG · Multi-Agent Systems · Knowledge Graphs · Explainable AI · Computer Vision · NLP</p>
+        </div>
+        <div class="skill-group">
+          <p class="label">Languages (human)</p>
+          <p class="values">Hindi <span style="color:var(--ink-faint)">(native)</span> · English <span style="color:var(--ink-faint)">(C1)</span> · German <span style="color:var(--ink-faint)">(A1.2)</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Let's build something <em>unreasonably useful.</em></h2>
+      <p>If you're hiring for AI engineering, applied research, or platform work on LLM systems, I'd love to hear from you. The fastest way to reach me is email.</p>
+      <a class="btn" href="mailto:deshwal.aryman@gmail.com?subject=Hello%20Aryman">
+        deshwal.aryman@gmail.com
+        <span class="arrow">→</span>
+      </a>
+      <span class="cta-secondary">
+        or find me on
+        <a href="https://github.com/arymandeshwal" target="_blank" rel="noopener">GitHub</a>
+        <span style="color:var(--ink-faint)">·</span>
+        <a href="https://www.linkedin.com/in/aryman-deshwal-905612168/" target="_blank" rel="noopener">LinkedIn</a>
+      </span>
+    </section>
+
+    <footer>
+      <span>Aryman Deshwal · Paderborn</span>
+    </footer>
+
+  </div>
+</main>
+
+</body>
+</html>
