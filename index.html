@@ -393,6 +393,177 @@
     color:var(--ink);
   }
 
+  /* Email + copy button (rail) */
+  .email-row{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .email-text{color:var(--ink)}
+  .copy-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    color:var(--ink-faint);
+    background:transparent;
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:0;
+    cursor:pointer;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .copy-btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+  .copy-btn .check-icon{display:none}
+  .copy-btn.copied{color:var(--paper);background:var(--accent-ink);border-color:var(--accent-ink)}
+  .copy-btn.copied .copy-icon{display:none}
+  .copy-btn.copied .check-icon{display:block}
+
+  /* Email + copy button (CTA) */
+  .email-cta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin:8px 0 4px;
+  }
+  .email-cta-text{
+    font-family:var(--serif);
+    font-size:21px;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .copy-btn-large{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    height:36px;
+    color:var(--ink-soft);
+    background:transparent;
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:0;
+    cursor:pointer;
+    transition:border-color .15s, color .15s, background .15s, transform .15s;
+  }
+  .copy-btn-large:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-1px)}
+  .copy-btn-large .check-icon{display:none}
+  .copy-btn-large.copied{color:var(--paper);background:var(--accent-ink);border-color:var(--accent-ink)}
+  .copy-btn-large.copied .copy-icon{display:none}
+  .copy-btn-large.copied .check-icon{display:block}
+
+  /* Contact form */
+  .form-divider{
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:28px 0 20px;
+    max-width:480px;
+  }
+  .form-divider::before,
+  .form-divider::after{
+    content:"";flex:1;height:1px;background:var(--rule);
+  }
+  .form-status{
+    font-family:var(--sans);
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:8px 0 0;
+    min-height:1em;
+  }
+  .form-status.success{color:var(--accent-ink)}
+  .form-status.error{color:#b34a3a}
+
+  .form-success{
+    max-width:480px;
+    padding:28px 28px 24px;
+    background:var(--paper-warm);
+    border:1px solid var(--rule-soft);
+    border-radius:3px;
+    margin:8px 0 24px;
+  }
+  .success-mark{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:var(--accent-ink);
+    color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .success-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    line-height:1.3;
+    margin:0 0 6px;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+  }
+  .success-body{
+    font-family:var(--sans);
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .send-another{
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink);
+    background:transparent;
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:8px 14px;
+    cursor:pointer;
+    transition:border-color .15s, color .15s;
+  }
+  .send-another:hover{border-color:var(--accent);color:var(--accent-ink)}
+  .contact-form{
+    display:grid;
+    gap:18px;
+    max-width:480px;
+    margin:8px 0 24px;
+  }
+  .contact-form .field{display:grid;gap:6px}
+  .contact-form label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .contact-form input,
+  .contact-form textarea{
+    font-family:var(--sans);
+    font-size:15px;
+    color:var(--ink);
+    background:var(--paper-warm);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:10px 12px;
+    width:100%;
+    transition:border-color .15s, background .15s;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:var(--paper);
+  }
+  .contact-form textarea{resize:vertical;min-height:96px;line-height:1.55}
+  .contact-form button{
+    justify-self:start;
+    border:none;
+    cursor:pointer;
+  }
+
   /* CTA */
   .cta{
     margin-top:72px;
@@ -500,10 +671,19 @@
 
     <ul class="contact">
       <li><span class="label">Loc</span><span>Paderborn, DE</span></li>
-      <li><span class="label">Mail</span><a href="/cdn-cgi/l/email-protection#f89c9d8b908f9994d6998a81959996b89f95999194d69b9795">deshwal.aryman@​gmail.com</a></li>
+      <li>
+        <span class="label">Mail</span>
+        <span class="email-row">
+          <span class="email-text">deshwal.aryman<span style="color:var(--ink-faint)"> [at] </span>gmail.com</span>
+          <button type="button" class="copy-btn" data-copy="deshwal.aryman@gmail.com" aria-label="Copy email address" title="Copy email">
+            <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
+            <svg class="check-icon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"></polyline></svg>
+          </button>
+        </span>
+      </li>
       <li><span class="label">Tel</span><a href="tel:+4915510744774">+49 15510 744774</a></li>
       <li><span class="label">Git</span><a href="https://github.com/arymandeshwal" target="_blank" rel="noopener">github.com/arymandeshwal</a></li>
-      <li><span class="label">In</span><a href="https://www.linkedin.com/in/aryman-deshwal-905612168/" target="_blank" rel="noopener">linkedin.com/in/aryman-deshwal</a></li>
+      <li><span class="label">In</span><a href="https://www.linkedin.com/in/arymandeshwal/" target="_blank" rel="noopener">linkedin.com/in/arymandeshwal</a></li>
     </ul>
 
   </aside>
@@ -742,16 +922,53 @@
     <!-- CTA -->
     <section class="cta">
       <h2>Let's build something <em>unreasonably useful.</em></h2>
-      <p>If you're hiring for AI engineering, applied research, or platform work on LLM systems, I'd love to hear from you. The fastest way to reach me is email.</p>
-      <a class="btn" href="/cdn-cgi/l/email-protection#c9adacbaa1bea8a5e7a8bbb0a4a8a789aea4a8a0a5e7aaa6a4f6babcaba3acaabdf481aca5a5a6ecfbf988bbb0a4a8a7">
-        Get in touch
-        <span class="arrow">→</span>
-      </a>
+      <p>If you're hiring for AI engineering, applied research, or platform work on LLM systems, I'd love to hear from you.</p>
+
+      <div class="email-cta">
+        <span class="email-cta-text">deshwal.aryman<span style="color:var(--ink-faint)"> [at] </span>gmail.com</span>
+        <button type="button" class="copy-btn-large" data-copy="deshwal.aryman@gmail.com" aria-label="Copy email address" title="Copy email">
+          <svg class="copy-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
+          <svg class="check-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"></polyline></svg>
+        </button>
+      </div>
+
+      <p class="form-divider"><span>or send a message</span></p>
+
+      <form class="contact-form" action="https://formspree.io/f/mykobkdw" method="POST">
+        <div class="field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" type="text" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="cf-email">Your email</label>
+          <input id="cf-email" type="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="4" required></textarea>
+        </div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn" type="submit">
+          Send message
+          <span class="arrow">→</span>
+        </button>
+        <p class="form-status" aria-live="polite"></p>
+      </form>
+
+      <div class="form-success" hidden aria-live="polite">
+        <div class="success-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"></polyline></svg>
+        </div>
+        <h3 class="success-title">Message sent.</h3>
+        <p class="success-body">Thanks for reaching out. I'll get back to you within a couple of days.</p>
+        <button type="button" class="send-another">Send another message</button>
+      </div>
+
       <span class="cta-secondary">
         or find me on
         <a href="https://github.com/arymandeshwal" target="_blank" rel="noopener">GitHub</a>
         <span style="color:var(--ink-faint)">·</span>
-        <a href="https://www.linkedin.com/in/aryman-deshwal-905612168/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/arymandeshwal/" target="_blank" rel="noopener">LinkedIn</a>
       </span>
     </section>
 
@@ -762,5 +979,70 @@
   </div>
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+<script>
+  document.querySelectorAll('.copy-btn, .copy-btn-large').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var email = btn.getAttribute('data-copy');
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch(e) {
+        var ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(_) {}
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.classList.remove('copied'); }, 1600);
+    });
+  });
+
+  // Contact form: AJAX submit to Formspree, no page redirect
+  var form = document.querySelector('.contact-form');
+  var success = document.querySelector('.form-success');
+  if (form && success) {
+    var status = form.querySelector('.form-status');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = 'Sending…';
+      try {
+        var res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = '';
+          form.hidden = true;
+          success.hidden = false;
+          success.scrollIntoView({behavior:'smooth', block:'nearest'});
+        } else {
+          var data = await res.json().catch(function(){ return {}; });
+          status.className = 'form-status error';
+          status.textContent = (data.errors && data.errors.map(function(x){return x.message}).join(', ')) || 'Something went wrong. Please email me directly.';
+        }
+      } catch(err) {
+        status.className = 'form-status error';
+        status.textContent = 'Network error. Please email me directly.';
+      }
+    });
+
+    var sendAnother = success.querySelector('.send-another');
+    if (sendAnother) {
+      sendAnother.addEventListener('click', function(){
+        success.hidden = true;
+        form.hidden = false;
+        var firstField = form.querySelector('input, textarea');
+        if (firstField) firstField.focus();
+      });
+    }
+  }
+</script>
+
+</body>
 </html>
